@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         val needed = mutableListOf<String>()
         if (Build.VERSION.SDK_INT >= 33 && checkSelfPermission(Manifest.permission.NEARBY_WIFI_DEVICES) != PackageManager.PERMISSION_GRANTED) needed.add(Manifest.permission.NEARBY_WIFI_DEVICES)
         if (Build.VERSION.SDK_INT <= 32 && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) needed.add(Manifest.permission.ACCESS_FINE_LOCATION)
-        if (needed.isNotEmpty()) permissionLauncher.launch(needed) else discoverPeers()
+        if (needed.isNotEmpty()) permissionLauncher.launch(needed.toTypedArray()) else discoverPeers()
     }
     private fun hasPermission(): Boolean = Build.VERSION.SDK_INT >= 33 || checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     private fun discoverPeers() {
